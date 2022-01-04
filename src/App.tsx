@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./cronies-logo.svg";
+import MetaPayment from './main/meta-payment'
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Got a hard hat. Work is currently in progress.</p>
       </header>
+      <MetaPayment />
     </div>
   );
 }
