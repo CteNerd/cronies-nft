@@ -25,8 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/mint" element={<Mint />} />
-          <Route path="about" element={<About />} />
-          <Route path="meta-tutorial" element={<MetaTutorial />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/meta-tutorial" element={<MetaTutorial />} />
         </Routes>
       </BrowserRouter>
     </div>
