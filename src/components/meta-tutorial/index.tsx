@@ -1,8 +1,8 @@
 import React, { useState, useEffect, FormEvent } from "react";
 import "./meta-payment.css";
 import { ethers } from "ethers";
-import {ERC20ABI} from '../../contracts/ERC20ABI/ERC20ABI'
-import MetaTransfer, {Tranx } from '../meta-transfer'
+import { ERC20ABI } from "../../contracts/ERC20ABI/ERC20ABI";
+import MetaTransfer, { Tranx } from "../meta-transfer";
 import MetaReadContract from "../meta-read-contract";
 
 declare var window: any;
@@ -63,7 +63,7 @@ export default function MetaTutorial() {
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
       <MetaReadContract />
-      <MetaTransfer contractInfoAddress={contractInfo.address} Txs={txs}/>
+      <MetaTransfer contractInfoAddress={contractInfo.address} Txs={txs} />
     </div>
   );
 }

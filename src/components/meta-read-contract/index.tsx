@@ -1,29 +1,28 @@
-import { ethers } from 'ethers';
-import React, { useState } from 'react'
-import { ERC20ABI } from '../../contracts/ERC20ABI/ERC20ABI';
+import { ethers } from "ethers";
+import React, { useState } from "react";
+import { ERC20ABI } from "../../contracts/ERC20ABI/ERC20ABI";
 
 declare var window: any;
 
 interface Contract {
-    address: string;
-    tokenName: string;
-    tokenSymbol: string;
-    totalSupply: string;
-    deployedAt?: string;
-  }
+  address: string;
+  tokenName: string;
+  tokenSymbol: string;
+  totalSupply: string;
+  deployedAt?: string;
+}
 
 export default function MetaReadContract() {
-
-    const [contractInfo, setContractInfo] = useState<Contract>({
-        address: "-",
-        tokenName: "-",
-        tokenSymbol: "-",
-        totalSupply: "-",
-      });
-      const [balanceInfo, setBalanceInfo] = useState({
-        address: "-",
-        balance: "-",
-      });
+  const [contractInfo, setContractInfo] = useState<Contract>({
+    address: "-",
+    tokenName: "-",
+    tokenSymbol: "-",
+    totalSupply: "-",
+  });
+  const [balanceInfo, setBalanceInfo] = useState({
+    address: "-",
+    balance: "-",
+  });
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -53,11 +52,7 @@ export default function MetaReadContract() {
   const getMyBalance = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
-    const erc20 = new ethers.Contract(
-      contractInfo.address,
-      ERC20ABI,
-      provider
-    );
+    const erc20 = new ethers.Contract(contractInfo.address, ERC20ABI, provider);
     const signer = await provider.getSigner();
     const signerAddress = await signer.getAddress();
     const balance = await erc20.balanceOf(signerAddress);
@@ -67,9 +62,8 @@ export default function MetaReadContract() {
       balance: String(balance),
     });
   };
-    return (
-
-      <div>
+  return (
+    <div>
       <form className="m-4" onSubmit={handleSubmit}>
         <div className="credit-card w-full lg:w-3/4 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
           <main className="mt-4 p-4">
@@ -146,5 +140,5 @@ export default function MetaReadContract() {
         </div>
       </form>
     </div>
-    )
+  );
 }

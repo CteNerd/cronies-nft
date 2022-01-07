@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react";
 import { ContractInterface, ethers } from "ethers";
 
-export const ERC20ABI = new ethers.utils.Interface(JSON.parse(`[
+export const ERC20ABI = new ethers.utils.Interface(
+  JSON.parse(`[
       {
           "inputs": [
               {
@@ -288,4 +289,5 @@ export const ERC20ABI = new ethers.utils.Interface(JSON.parse(`[
           "stateMutability": "nonpayable",
           "type": "function"
       }
-  ]`));
+  ]`)
+);
