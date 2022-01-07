@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import TxList from "../meta-transaction-list/TxList";
-import { ERC20ABI } from "../../contracts/ERC20ABI/ERC20ABI";
+import { ERC20ABI } from "../../../contracts/ERC20ABI/ERC20ABI";
 
 declare var window: any;
 

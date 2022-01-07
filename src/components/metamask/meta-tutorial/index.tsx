@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FormEvent } from "react";
 import "./meta-payment.css";
 import { ethers } from "ethers";
-import { ERC20ABI } from "../../contracts/ERC20ABI/ERC20ABI";
+import { ERC20ABI } from "../../../contracts/ERC20ABI/ERC20ABI";
 import MetaTransfer, { Tranx } from "../meta-transfer";
 import MetaReadContract from "../meta-read-contract";
 

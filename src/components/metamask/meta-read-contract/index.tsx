@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import React, { useState } from "react";
-import { ERC20ABI } from "../../contracts/ERC20ABI/ERC20ABI";
+import { ERC20ABI } from "../../../contracts/ERC20ABI/ERC20ABI";
 
 declare var window: any;
 

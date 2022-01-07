@@ -4,7 +4,7 @@ import Home from "./main/home";
 import Mint from "./main/mint";
 import About from "./main/about";
 import Nav from "./components/nav";
-import MetaTutorial from "./components/meta-tutorial";
+import MetaTutorial from "./components/metamask/meta-tutorial";
 import {
   BrowserRouter as Router,
   Route,
