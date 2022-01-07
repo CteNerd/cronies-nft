@@ -1,5 +1,7 @@
 import React from "react";
 
 export default function Index() {
-  return <div></div>;
+  return <div>
+    <h1>What are Cronies?</h1>
+  </div>;
 }
