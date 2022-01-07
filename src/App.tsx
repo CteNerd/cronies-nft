@@ -8,9 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Got a hard hat. Work is currently in progress.</p>
       </header>
-      <MetaPayment />
     </div>
   );
 }
