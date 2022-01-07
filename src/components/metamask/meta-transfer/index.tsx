@@ -1,12 +1,12 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import TxList from "../meta-transaction-list/TxList";
 import { ERC20ABI } from "../../../contracts/ERC20ABI/ERC20ABI";
+import './meta-transfer.css'
 
 declare var window: any;
 
 interface Props {
-  contractInfoAddress: string;
   Txs: Array<Tranx>;
 }
 
@@ -23,19 +23,36 @@ export default function MetaTransfer(props: Props) {
   }, []);
 
   const [txs, setTxs] = useState(Array<Tranx>());
+  const [amtToSend, setAmtToSend] = useState<BigNumber>(BigNumber.from(0));
+  const [tranxEnabled, setTranxEnabled] = useState<Boolean>(false);
+
+  const handleAmtChange = async (e: any) => {
+    try {
+      if (e.target.value) {
+        let amt = BigNumber.from(e.target.value);
+        setAmtToSend(amt);
+        setTranxEnabled(true);
+      }
+    } catch {
+      alert("Transfer amount must be a whole number.");
+      setTranxEnabled(false);
+    }
+  }
 
   const handleTransfer = async (e: any) => {
-    e.preventDefault();
     const data = new FormData(e.target);
+    const toAddy : string = data.get("recipient")?.toString()!;
+
+    e.preventDefault();
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
     const erc20 = new ethers.Contract(
-      props.contractInfoAddress,
+      toAddy,
       ERC20ABI,
       signer
     );
-    await erc20.transfer(data.get("recipient"), data.get("amount"));
+    await erc20.transfer(toAddy, amtToSend);
   };
 
   return (
@@ -59,6 +76,8 @@ export default function MetaTransfer(props: Props) {
               <input
                 type="text"
                 name="amount"
+                pattern="[0-9]+"
+                onChange={handleAmtChange}
                 className="input input-bordered block w-full focus:ring focus:outline-none"
                 placeholder="Amount to transfer"
               />
@@ -66,6 +85,7 @@ export default function MetaTransfer(props: Props) {
             <footer className="p-4">
               <button
                 type="submit"
+                disabled={!tranxEnabled}
                 className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
               >
                 Transfer

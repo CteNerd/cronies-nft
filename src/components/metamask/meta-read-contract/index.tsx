@@ -39,8 +39,6 @@ export default function MetaReadContract() {
     const tokenSymbol = await erc20.symbol();
     const totalSupply = await erc20.totalSupply();
 
-    console.log(tokenName);
-
     setContractInfo({
       address: data.get("addr")?.toString()!,
       tokenName,

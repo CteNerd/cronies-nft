@@ -63,7 +63,7 @@ export default function MetaTutorial() {
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
       <MetaReadContract />
-      <MetaTransfer contractInfoAddress={contractInfo.address} Txs={txs} />
+      <MetaTransfer Txs={txs} />
     </div>
   );
 }
