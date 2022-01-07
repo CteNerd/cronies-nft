@@ -37,40 +37,40 @@ export default function Index() {
     balance: "-",
   });
 
-  let contractInterface: ethers.ContractInterface = "";
+  let contractInterface: ethers.ContractInterface = erc20abi.toString();
 
-//   useEffect(() => {
-//     if (contractInfo.address !== "-") {
-//       const provider = new ethers.providers.Web3Provider(window.ethereum);
+  useEffect(() => {
+    if (contractInfo.address !== "-") {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-//       const erc20 = new ethers.Contract(
-//         contractInfo.address,
-//         contractInterface,
-//         provider
-//       );
+      const erc20 = new ethers.Contract(
+        contractInfo.address,
+        contractInterface,
+        provider
+      );
 
-//       erc20.on("Transfer", (from, to, amount, event) => {
-//         console.log({ from, to, amount, event });
+      erc20.on("Transfer", (from, to, amount, event) => {
+        console.log({ from, to, amount, event });
 
-//         setTxs((currentTxs) => [
-//           ...currentTxs,
-//           {
-//             txHash: event.transactionHash,
-//             from,
-//             to,
-//             amount: String(amount),
-//           },
-//         ]);
-//       });
-//       setContractListened(erc20);
+        setTxs((currentTxs) => [
+          ...currentTxs,
+          {
+            txHash: event.transactionHash,
+            from,
+            to,
+            amount: String(amount),
+          },
+        ]);
+      });
+      setContractListened(erc20);
 
-//       return () => {
-//         if (contractListened) {
-//           contractListened.removeAllListeners();
-//         }
-//       };
-//     }
-//   }, [contractInfo.address]);
+      return () => {
+        if (contractListened) {
+          contractListened.removeAllListeners();
+        }
+      };
+    }
+  }, [contractInfo.address]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
