@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./cronies-logo.svg";
-import MetaPayment from './components/meta-payment'
+import MetaPayment from './components/meta-tutorial'
 import "./App.css";
 
 function App() {
