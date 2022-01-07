@@ -15,7 +15,7 @@ interface Contract {
   deployedAt?: string;
 }
 
-export default function Index() {
+export default function MetaTutorial() {
   const [txs, setTxs] = useState(Array<Tranx>());
   const [contractListened, setContractListened] =
     useState<ethers.Contract | null>(null);
