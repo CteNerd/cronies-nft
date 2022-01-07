@@ -1,4 +1,4 @@
-import { Tranx } from "./index";
+import { Tranx } from "../meta-transfer/index";
 
 interface Props {
   txs: Tranx[];
